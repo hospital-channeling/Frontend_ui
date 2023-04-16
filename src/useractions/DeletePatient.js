@@ -33,7 +33,7 @@ export default function DeletePatient() {
       noValidate
       autoComplete="off">
         
-        {/* <h1 color='primary'>DELETE PATIENT</h1> */}
+        <h1 color='primary'>DELETE PATIENT</h1>
      
       
     </Box>

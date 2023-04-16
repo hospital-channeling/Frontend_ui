@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import PatientRegistration from '../useractions/PatientRegistration';
 import UpdatePatient from '../useractions/UpdatePatient';
-import DeletePatient from '../useractions/DeletePatient';
+// import DeletePatient from '../useractions/DeletePatient';
 import GetPatientDetails from '../useractions/GetPatientDetails';
 import { Link } from '@mui/material';
 
@@ -45,6 +45,7 @@ function a11yProps(index: number) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
+  const tabStyle = {color:"white"}
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -54,10 +55,10 @@ export default function BasicTabs() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Patient Registration" {...a11yProps(0)} />
-          <Tab label="Update Patient" {...a11yProps(1)} />
-          <Tab label="Get Patient Details" {...a11yProps(2)} />
-          <Tab label="Delete Patient" {...a11yProps(3)} />
+          <Tab label="Patient Registration" style={tabStyle} {...a11yProps(0)} />
+          <Tab label="Update Patient" style={tabStyle} {...a11yProps(1)} />
+          <Tab label="Get Patient Details" style={tabStyle} {...a11yProps(2)} />
+          {/* <Tab label="Delete Patient" {...a11yProps(3)} /> */}
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -69,9 +70,9 @@ export default function BasicTabs() {
       <TabPanel value={value} index={2}>
        <GetPatientDetails/>
       </TabPanel>
-      <TabPanel value={value} index={3}>
+      {/* <TabPanel value={value} index={3}>
       <DeletePatient/>
-      </TabPanel>
+      </TabPanel> */}
     </Box>
   );
 }

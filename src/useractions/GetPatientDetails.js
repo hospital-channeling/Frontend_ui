@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useState } from "react";
 import axios from "axios";
+import ScrollingPaper from '../components/ScrollingPaper';
+import {Paper, Button, Grid, TextField} from '@mui/material';
 
 
 
@@ -94,6 +96,7 @@ import axios from "axios";
 export default function GetPatient() {
 
     const [patient, setPatient] = useState([]);
+    const paperStyle={padding:20, margin:'150px 30px'}
 
     React.useEffect(() =>{
         loadPatientDetails();
@@ -106,49 +109,53 @@ export default function GetPatient() {
 
 
   return (
-    <div className='container'>
-        <div className='py-4'>
-        <table className="table border shadow">
-        <thead>
-            <tr>
-            <th scope="col">#</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">Age</th>
-            <th scope="col">Birthdate</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Email</th>
-            <th scope="col">Contact</th>
-            <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {
-                patient.map((patient,index)=>(
-                    <tr>
-                    <th scope="row" key={index}>{index+1}</th>
-                    <td>{patient.first_name}</td>
-                    <td>{patient.last_name}</td>
-                    <td>{patient.address}</td>
-                    <td>{patient.age}</td>
-                    <td>{patient.birthdate}</td>
-                    <td>{patient.gender}</td>
-                    <td>{patient.email}</td>
-                    <td>{patient.contact}</td>
-                    <td>
-                        <button className='btn btn-primary mx-2' href="/viewPatient">View</button>
-                        <button className='btn btn-outline-primary mx-2' href="/updatePatient">Edit</button>
-                        <button className='btn btn-danger mx-2' href="/deletePatient">Delete</button>
-                    </td>
-                    </tr>
-                ))
-            }
-        
-        </tbody>
-        </table>
-        </div>
+    <ScrollingPaper>
+        <Paper elevation={10} style={paperStyle}>
+        {/* <div className='container'> */}
+            <div className='py-4'>
+            <table className="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Age</th>
+                <th scope="col">Birthdate</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Email</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    patient.map((patient,index)=>(
+                        <tr>
+                        <th scope="row" key={index}>{index+1}</th>
+                        <td>{patient.first_name}</td>
+                        <td>{patient.last_name}</td>
+                        <td>{patient.address}</td>
+                        <td>{patient.age}</td>
+                        <td>{patient.birthdate}</td>
+                        <td>{patient.gender}</td>
+                        <td>{patient.email}</td>
+                        <td>{patient.contact}</td>
+                        <td>
+                            <button className='btn btn-primary mx-2' href="/viewPatient">View</button>
+                            <button className='btn btn-outline-primary mx-2' href="/updatePatient">Edit</button>
+                            <button className='btn btn-danger mx-2' href="/deletePatient">Delete</button>
+                        </td>
+                        </tr>
+                    ))
+                }
+            
+            </tbody>
+            </table>
+            </div>
 
-    </div>
+        {/* </div> */}
+        </Paper>
+    </ScrollingPaper>
   )
 }

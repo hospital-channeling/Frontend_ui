@@ -13,11 +13,11 @@ import { Link } from "react-router-dom";
 
 const Signup=()=>{
 
-    const paperStyle={padding:20, width:400, margin:'50px auto'}
-    const avatarStyle={backgroundColor:"#00ff99", margin:'5px'}
-    const textfieldStyle={margin:'3px auto'}
-    const headerStyle={margin:'10px auto 10px auto'}
-    const btnStyle={backgroundColor:"#00ff99",margin:'20px auto 20px auto'}
+    const paperStyle={padding:20, width:400, margin:'80px auto'}
+    const avatarStyle={backgroundColor:"#00ff99", margin:'10px auto'}
+    const textfieldStyle={margin:'10px auto'}
+    const headerStyle={margin:'10px auto 30px auto'}
+    const btnStyle={backgroundColor:"#00ff99",margin:'10px auto 20px auto'}
     const typoStyle={margin:'10px 20px 40px 20px'}
 
     const [value, setValue] = React.useState('male');
@@ -47,7 +47,8 @@ const Signup=()=>{
                   </RadioGroup>
                 </FormControl>
                 <TextField id="outlined-basic" style={textfieldStyle} label="Email" placeholder='Email' fullWidth Required/>
-                <TextField id="outlined-basic" style={textfieldStyle} label="Password" placeholder='Password' fullWidth Required/>
+                <TextField id="outlined-basic" style={textfieldStyle} label="Contact" placeholder='Contact' fullWidth Required/>
+                <TextField id="outlined-basic" style={textfieldStyle} label="Password" type="password" placeholder='Password' fullWidth Required/>
                 <TextField id="outlined-basic" style={textfieldStyle} label="Re-enter Password" type="password" placeholder='Re-enter Password' fullWidth Required/>
 
                 <FormControlLabel

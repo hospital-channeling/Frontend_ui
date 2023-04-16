@@ -1,65 +1,101 @@
 import * as React from 'react';
+import {Paper, Button, Grid, TextField} from '@mui/material';
+import { Avatar} from '@mui/material';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import { Link } from "react-router-dom";
+import ScrollingPaper from '../components/ScrollingPaper';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 import { useState } from "react";
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { Container, Paper, Button } from '@mui/material';
+
 
 export default function PatientRegistration() {
-    const paperStyle={padding:'50px 20px', width:600, margin:'20px auto'}
-    const[firstname, setfirstName]=useState("")
-    const[lastname, setlastName]=useState("")
-    const[address, setAddress]=useState("")
-    const[age, setAge]=useState("")
-    const[birthdate, setBirthdate]=useState("")
-    const[gender, setGender]=useState("")
+
+  const[firstname, setfirstName]=useState("")
+  const[lastname, setlastName]=useState("")
+  const[address, setAddress]=useState("")
+  const[birthdate, setBirthdate]=useState("")
+  const[gender, setGender]=useState("")
+  const[email, setEmail]=useState("")
+  const[contact, setContact]=useState("")
+  const[password, setPassword]=useState("")
+
+  const paperStyle={padding:20, width:400, margin:'150px auto'}
+  const avatarStyle={backgroundColor:"#00ff99", margin:'10px auto'}
+  const textfieldStyle={margin:'10px auto'}
+  const headerStyle={margin:'10px auto 30px auto'}
+  const btn1Style={backgroundColor:"#00ff99",margin:'20px auto 20px auto'}
+  const btn2Style={backgroundColor:"#D10034",margin:'0 auto 20px auto'}
+
+  const [value, setValue] = React.useState('male');
+  const handleChange = (event) => {
+      setValue(event.target.value);
+    };
+
     const clickSubmit=(e)=>{
-        e.preventDefault()
-        const patient={firstname,lastname,address,age,birthdate,gender}
-        console.log(patient)
-        fetch("http://localhost:8080/api/patient/savePatient",{
-            method:"POST",
-            headers:{"Content-Type":"application/json"},
-            body:JSON.stringify(patient)
-        }).then(()=>{
-            console.log("New Patient added")
-        })
-    }
+              e.preventDefault()
+              const patient={firstname,lastname,address,birthdate,gender,email,contact,password}
+              console.log(patient)
+              fetch("http://localhost:8080/api/patient/savePatient",{
+                  method:"POST",
+                  headers:{"Content-Type":"application/json"},
+                  body:JSON.stringify(patient)
+              }).then(()=>{
+                  console.log("New Patient added")
+              })
+          }
 
-    
-    
-  return (
-    <Container>
-        <Paper elevation={3} style={paperStyle}>
-    <Box component="form" sx={{'& > :not(style)': { m: 1, width: '35ch' },}}
-      noValidate
-      autoComplete="off">
-      {/* <h1 color='primary'>PATIENT REGISTRATION</h1> */}
-      <TextField id="outlined-basic" label="First Name" variant="outlined" 
-      value={firstname} onChange={(e)=>setfirstName(e.target.value)}/>
-      <TextField id="outlined-basic" label="Last Name" variant="outlined" 
-      value={lastname} onChange={(e)=>setlastName(e.target.value)}/>
-      <TextField id="outlined-basic" label="Address" variant="outlined" 
-      value={address} onChange={(e)=>setAddress(e.target.value)}/>
-      <TextField id="outlined-basic" label="Age" variant="outlined" 
-      value={age} onChange={(e)=>setAge(e.target.value)}/>
-      <TextField id="outlined-basic" label="Birthdate" variant="outlined" 
-      value={birthdate} onChange={(e)=>setBirthdate(e.target.value)}/>
-      <TextField id="outlined-basic" label="Gender" variant="outlined" 
-      value={gender} onChange={(e)=>setGender(e.target.value)}/>
-      <TextField id="outlined-basic" label="Email" variant="outlined" 
-      value={gender} onChange={(e)=>setGender(e.target.value)}/>
-      <TextField id="outlined-basic" label="Contact" variant="outlined" 
-      value={gender} onChange={(e)=>setGender(e.target.value)}/>
+  return(
+      <Grid>
+          <ScrollingPaper>
+          <Paper elevation={10} style={paperStyle}>
+              <Grid align='center'>
+                  <Avatar style={avatarStyle}><PersonAddIcon/></Avatar>
+                  <h2 style={headerStyle}>Register Patient</h2>
+              </Grid>
 
-    <Button variant="contained" color="primary" onClick={clickSubmit}>
-    SUBMIT
-    </Button>
-    <Button variant="contained" color="secondary" onClick={clickSubmit}>
-    CANCEL
-    </Button>
-      
-    </Box>
-    </Paper>
-    </Container>
-  );
+              <TextField id="outlined-basic" style={textfieldStyle} label="First Name" placeholder='First Name' value={firstname} onChange={(e)=>setfirstName(e.target.value)} fullWidth Required/>
+              <TextField id="outlined-basic" style={textfieldStyle} label="Last Name" placeholder='Last Name' value={lastname} onChange={(e)=>setlastName(e.target.value)} fullWidth Required/>
+              <TextField id="outlined-basic" style={textfieldStyle} label="Address" placeholder='Address' value={address} onChange={(e)=>setAddress(e.target.value)} fullWidth Required/>
+              <TextField id="outlined-basic" style={textfieldStyle} label="Birthdate" placeholder='Birthdate' value={birthdate} onChange={(e)=>setBirthdate(e.target.value)} fullWidth Required/>
+              <FormControl component="fieldset">
+              <FormLabel component="legend">Gender</FormLabel>
+              <RadioGroup aria-label="gender" name="gender1" value={value} style={{display:'initial'}} onChange={handleChange}>
+                  <FormControlLabel value="male" control={<Radio />} label="Male" onChange={(e)=>setGender(e.target.value)}/>
+                  <FormControlLabel value="female" control={<Radio />} label="Female" onChange={(e)=>setGender(e.target.value)}/>
+                </RadioGroup>
+              </FormControl>
+              <TextField id="outlined-basic" style={textfieldStyle} label="Email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder='Email' fullWidth Required/>
+              <TextField id="outlined-basic" style={textfieldStyle} label="Contact" value={contact} onChange={(e)=>setContact(e.target.value)} placeholder='Contact' fullWidth Required/>
+              <TextField id="outlined-basic" style={textfieldStyle} label="Password" type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Password' fullWidth Required/>
+              <TextField id="outlined-basic" style={textfieldStyle} label="Re-enter Password" type="password" placeholder='Re-enter Password' fullWidth Required/>
+
+              {/* <FormControlLabel
+              control={
+              <Checkbox
+                  // checked={state.checkedB}
+                  // onChange={handleChange}
+                  name="checkedB"
+                  color="primary"
+              />
+              }
+              label="I accept the terms and conditions"
+              /> */}
+
+          <Button variant="contained" to="" color="primary" onClick={clickSubmit} style={btn1Style} fullWidth>
+          UPDATE
+          </Button>
+
+          <Button variant="contained" to="" color="primary" style={btn2Style} fullWidth>
+          CANCEL
+          </Button>
+
+          </Paper>
+          </ScrollingPaper>
+      </Grid>
+
+  )
 }
