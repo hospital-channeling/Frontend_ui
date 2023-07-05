@@ -29,10 +29,10 @@ export default function DeletePatient() {
   return (
     <Container>
         <Paper elevation={3} style={paperStyle}>
-    <Box component="form" sx={{'& > :not(style)': { m: 1, width: '35ch' },}}
-      noValidate
-      autoComplete="off">
-        
+        <Box component="form" sx={{'& > :not(style)': { m: 1, width: '35ch' },}}
+          noValidate
+          autoComplete="off">
+            
         <h1 color='primary'>DELETE PATIENT</h1>
      
       

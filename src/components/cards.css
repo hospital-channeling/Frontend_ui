@@ -1,0 +1,9 @@
+.cards-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .cards-container > * {
+    margin: 250px 50px;
+  }
+  
