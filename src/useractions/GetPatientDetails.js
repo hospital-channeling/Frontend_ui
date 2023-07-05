@@ -3,8 +3,9 @@ import { useState } from "react";
 import axios from "axios";
 import ScrollingPaper from '../components/ScrollingPaper';
 import {Paper, Button, Grid, TextField} from '@mui/material';
-
-
+import { Link } from "react-router-dom";
+import updatePatient from './UpdatePatient.js';
+import { useParams, useNavigate } from 'react-router-dom';
 
 
 // export default function GetPatient() {
@@ -103,10 +104,14 @@ export default function GetPatient() {
     },[]);
 
     const loadPatientDetails=async()=>{
-        const result = await axios.get("http://localhost:8080/api/patient/getPatient")
+        const result = await axios.get("http://localhost:8080/api/user/getUser")
         setPatient(result.data);
     }
 
+    const deleteUser =async (id) =>{
+        await axios.delete(`http://localhost:8080/api/user/deleteUserByID/${id}`);
+        loadPatientDetails();
+    }
 
   return (
     <ScrollingPaper>
@@ -120,7 +125,7 @@ export default function GetPatient() {
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Address</th>
-                <th scope="col">Age</th>
+                {/* <th scope="col">Age</th> */}
                 <th scope="col">Birthdate</th>
                 <th scope="col">Gender</th>
                 <th scope="col">Email</th>
@@ -136,15 +141,15 @@ export default function GetPatient() {
                         <td>{patient.first_name}</td>
                         <td>{patient.last_name}</td>
                         <td>{patient.address}</td>
-                        <td>{patient.age}</td>
+                        {/* <td>{patient.age}</td> */}
                         <td>{patient.birthdate}</td>
                         <td>{patient.gender}</td>
                         <td>{patient.email}</td>
                         <td>{patient.contact}</td>
                         <td>
-                            <button className='btn btn-primary mx-2' href="/viewPatient">View</button>
-                            <button className='btn btn-outline-primary mx-2' href="/updatePatient">Edit</button>
-                            <button className='btn btn-danger mx-2' href="/deletePatient">Delete</button>
+                            <Link to={"/viewPatient"} className='btn btn-primary mx-2'>View</Link>
+                            <Link to={`/getUserByID/${patient.id}`} className='btn btn-outline-primary mx-2'>Edit</Link>
+                            <button onClick={()=>deleteUser(patient.id)} className='btn btn-danger mx-2' href="/deleteUser">Delete</button>
                         </td>
                         </tr>
                     ))
