@@ -3,10 +3,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import PatientRegistration from '../useractions/PatientRegistration';
-import UpdatePatient from '../useractions/UpdatePatient';
+import PatientRegistration from '../patientActions/PatientRegistration';
+import UpdatePatient from '../patientActions/UpdatePatient';
 // import DeletePatient from '../useractions/DeletePatient';
-import GetPatientDetails from '../useractions/GetPatientDetails';
+import GetPatientDetails from '../patientActions/GetPatientDetails';
 import { Link } from '@mui/material';
 
 
