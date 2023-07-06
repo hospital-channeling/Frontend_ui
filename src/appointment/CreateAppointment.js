@@ -23,8 +23,7 @@ export default function CreateAppointment() {
     const [data, setData] = useState({
       doctor_name:"",
       patient_name:"",
-      app_date:"",
-      time_slots:""
+      app_date:""
     });
 
     function submit(e){
@@ -32,8 +31,7 @@ export default function CreateAppointment() {
       axios.post(url,{
         doctor_name:data.doctor_name,
         patient_name:data.patient_name,
-        app_date:data.app_date,
-        time_slots:data.time_slots
+        app_date:data.app_date
       });
       navigate("/getAppoitmnets");
       // .then(res=>{
@@ -61,7 +59,6 @@ export default function CreateAppointment() {
                 <TextField onChange={(e)=>handle(e)} id='doctor_name' style={textfieldStyle} label="Doctor Name" placeholder='Doctor Name' value={data.doctor_name} fullWidth Required/>
                 <TextField onChange={(e)=>handle(e)} id='patient_name' style={textfieldStyle} label="Patient Name" placeholder='Patient Name' value={data.patient_name} fullWidth Required/>
                 <TextField onChange={(e)=>handle(e)} id='app_date' style={textfieldStyle} label="Date" placeholder='YYYY-MM-DD' value={data.app_date} fullWidth Required/>
-                <TextField onChange={(e)=>handle(e)} id='time_slots' style={textfieldStyle} label="Time Preferred" placeholder='In 24hr format (ex: 14.30)' value={data.time_slots} fullWidth Required/>
           
             <Button type="submit" variant="contained" to="" color="primary" style={btn1Style} fullWidth>
             SUBMIT

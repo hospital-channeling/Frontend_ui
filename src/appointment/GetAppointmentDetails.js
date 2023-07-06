@@ -38,7 +38,6 @@ export default function GetAppointmentDetails() {
                 <th scope="col">Patient Name</th>
                 <th scope="col">Doctor Name</th>
                 <th scope="col">Date</th>
-                <th scope="col">Time Slot</th>
                 <th scope="col">Status</th>
                 </tr>
             </thead>
@@ -51,7 +50,6 @@ export default function GetAppointmentDetails() {
                         <td>{appointment.patient_name}</td>
                         <td>{appointment.doctor_name}</td>
                         <td>{appointment.app_date}</td>
-                        <td>{appointment.time_slots}</td>
                         <td>{appointment.app_status}</td>
                         <td>
                             <Link to={"/getAppointmentById"} className='btn btn-primary mx-2'>View</Link>

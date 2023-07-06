@@ -8,11 +8,10 @@ export default function DeleteAppointment() {
     const[doctor_name, setDoctorName]=useState("")
     const[patient_name, setPatientName]=useState("")
     const[app_date, setAppDate]=useState("")
-    const[time_slots, setTimeSlot]=useState("")
     const[app_status, setStatus]=useState("")
     const clickSubmit=(e)=>{
         e.preventDefault()
-        const appointment={doctor_name,patient_name,app_date,time_slots,app_status}
+        const appointment={doctor_name,patient_name,app_date,app_status}
         console.log(appointment)
         fetch("http://localhost:8080/api/appointment/appointmentdelete",{
             method:"DELETE",

@@ -15,8 +15,7 @@ function ViewAppoitmentById() {
         doctor_name:"",
         patient_name:"",
         app_date:"",
-        time_slots:"",
-        app_status:""
+        time_slots:""
     });
 
     React.useEffect(()=>{ 
@@ -67,13 +66,7 @@ function ViewAppoitmentById() {
                         <b>Appointment Date : </b> {user.app_date}
                     </li>
                 </ul>
-
-                <ul className='list-group list-group-flush'>
-                    <li className='list-group-item'>
-                        <b>Appointment Time : </b> {user.time_slots}
-                    </li>
-                </ul>
-
+                
                 <ul className='list-group list-group-flush'>
                     <li className='list-group-item'>
                         <b>Appointment Status : </b> {user.app_status}

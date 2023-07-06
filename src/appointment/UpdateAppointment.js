@@ -24,8 +24,7 @@ export default function UpdateAppointment() {
       doctor_name:"",
       patient_name:"",
       app_date:"",
-      time_slots:"",
-      app_status:""
+      time_slots:""
     });   
     
 
@@ -63,7 +62,6 @@ export default function UpdateAppointment() {
           <TextField onChange={(e) => handle(e)} name='doctor_name' style={textfieldStyle} label="Doctor Name" placeholder='Doctor Name' value={user.doctor_name} fullWidth required />
           <TextField onChange={(e) => handle(e)} name='patient_name' style={textfieldStyle} label="Patient Name" placeholder='Patient Name' value={user.patient_name} fullWidth required />
           <TextField onChange={(e) => handle(e)} name='app_date' style={textfieldStyle} label="Date" placeholder='YYYY-MM-DD' value={user.app_date} fullWidth required />
-          <TextField onChange={(e) => handle(e)} name='time_slots' style={textfieldStyle} label="Time Preferred" placeholder='In 24hr format (ex: 14.30)' value={user.time_slots} fullWidth required />
           <TextField onChange={(e) => handle(e)} name='app_status' style={textfieldStyle} label="status of the appointment" value={user.email} placeholder='Confirmed or Not Confirmed' fullWidth required />
 
       <Button type="submit" variant="contained" to="" color="primary" style={btn1Style} fullWidth>
